@@ -48,6 +48,11 @@
         result = [self popOperand] * [self popOperand];
     } else if ([operation isEqualToString:@"/"]) {
         result = [self popOperand] / [self popOperand];
+    } else if ([operation isEqualToString:@"x²"]) {
+        double operand = [self popOperand];
+        result = operand * operand;
+    } else if ([operation isEqualToString:@"√x"]) {
+        result = sqrt( [self popOperand] );
     }
     [self pushOperand:result];
     return result;
