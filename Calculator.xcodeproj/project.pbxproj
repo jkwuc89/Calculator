@@ -18,6 +18,7 @@
 		87D7A3481683A41C00180FFC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D7A3471683A41C00180FFC /* Default-568h@2x.png */; };
 		87D7A34B1683A41C00180FFC /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87D7A3491683A41C00180FFC /* MainStoryboard.storyboard */; };
 		87D7A34E1683A41C00180FFC /* CalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D7A34D1683A41C00180FFC /* CalculatorViewController.m */; };
+		87D7A35616848DBB00180FFC /* CalculatorBrain.m in Sources */ = {isa = PBXBuildFile; fileRef = 87D7A35516848DBB00180FFC /* CalculatorBrain.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		87D7A34A1683A41C00180FFC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		87D7A34C1683A41C00180FFC /* CalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CalculatorViewController.h; sourceTree = "<group>"; };
 		87D7A34D1683A41C00180FFC /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
+		87D7A35416848DBB00180FFC /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
+		87D7A35516848DBB00180FFC /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				87D7A3401683A41C00180FFC /* CalculatorAppDelegate.h */,
 				87D7A3411683A41C00180FFC /* CalculatorAppDelegate.m */,
 				87D7A3491683A41C00180FFC /* MainStoryboard.storyboard */,
+				87D7A35416848DBB00180FFC /* CalculatorBrain.h */,
+				87D7A35516848DBB00180FFC /* CalculatorBrain.m */,
 				87D7A34C1683A41C00180FFC /* CalculatorViewController.h */,
 				87D7A34D1683A41C00180FFC /* CalculatorViewController.m */,
 				87D7A3381683A41C00180FFC /* Supporting Files */,
@@ -177,6 +182,7 @@
 				87D7A33E1683A41C00180FFC /* main.m in Sources */,
 				87D7A3421683A41C00180FFC /* CalculatorAppDelegate.m in Sources */,
 				87D7A34E1683A41C00180FFC /* CalculatorViewController.m in Sources */,
+				87D7A35616848DBB00180FFC /* CalculatorBrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +217,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keith Wedinger (7P8CVJ3E26)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -226,6 +233,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "00FDC60F-0C86-4D9A-B61D-32EDFE9064FA";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -239,6 +247,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keith Wedinger (7P8CVJ3E26)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -247,6 +256,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "00FDC60F-0C86-4D9A-B61D-32EDFE9064FA";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -255,10 +265,12 @@
 		87D7A3521683A41C00180FFC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keith Wedinger (7P8CVJ3E26)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "00FDC60F-0C86-4D9A-B61D-32EDFE9064FA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -266,10 +278,12 @@
 		87D7A3531683A41C00180FFC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Keith Wedinger (7P8CVJ3E26)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Calculator/Calculator-Prefix.pch";
 				INFOPLIST_FILE = "Calculator/Calculator-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "00FDC60F-0C86-4D9A-B61D-32EDFE9064FA";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
