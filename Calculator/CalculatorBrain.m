@@ -9,58 +9,93 @@
 #import "CalculatorBrain.h"
 
 @interface CalculatorBrain()
-@property (nonatomic, strong) NSMutableArray *operandStack;
+@property (nonatomic, strong) NSMutableArray *programStack;
 @end
 
 @implementation CalculatorBrain
 
-@synthesize operandStack = _operandStack;
+@synthesize programStack = _programStack;
 
-- (NSMutableArray *)operandStack {
-    if ( _operandStack == nil ) {
-        _operandStack = [[NSMutableArray alloc] init];
+- (NSMutableArray *)programStack {
+    if ( _programStack == nil ) {
+        _programStack = [[NSMutableArray alloc] init];
     }
-    return _operandStack;
+    return _programStack;
 }
 
 - (void)pushOperand:(double)operand {
     NSLog( @"Adding %f to operand stack", operand );
-    [self.operandStack addObject:[NSNumber numberWithDouble:operand]];
-}
-
-- (double)popOperand {
-    NSNumber *operandObj = [self.operandStack lastObject];
-    if ( operandObj != nil ) {
-        [self.operandStack removeLastObject];
-    }
-    NSLog( @"Popping %@ off operand stack", operandObj );
-    return [operandObj doubleValue];
+    [self.programStack addObject:[NSNumber numberWithDouble:operand]];
 }
 
 - (double)performOperation:(NSString *)operation {
-    NSLog( @"Performing operation '%@'", operation );
+    [self.programStack addObject:operation];
+    return [CalculatorBrain runProgram:self.programStack];
+}
+
+// Read only program property only needs a getter
+// Return a snapshot of the program stack
+- (id)program {
+    // Returns a immutable copy of the program stack
+    return [self.programStack copy];
+}
+
++ (NSString *)getDescriptionOfProgram:(id)program {
+    // TODO: Implmenet later
+    return nil;
+}
+
+// Recursively run this method until stack is empty to complete
+// the operations on the stack
++ (double)popOperandOffStack:(NSMutableArray *)stack {
     double result = 0;
-    if ( [operation isEqualToString:@"+"] ) {
-        result = [self popOperand] + [self popOperand];
-    } else if ([operation isEqualToString:@"-"]) {
-        result = [self popOperand] - [self popOperand];
-    } else if ([operation isEqualToString:@"*"]) {
-        result = [self popOperand] * [self popOperand];
-    } else if ([operation isEqualToString:@"/"]) {
-        result = [self popOperand] / [self popOperand];
-    } else if ([operation isEqualToString:@"x²"]) {
-        double operand = [self popOperand];
-        result = operand * operand;
-    } else if ([operation isEqualToString:@"√x"]) {
-        result = sqrt( [self popOperand] );
+    
+    // Use id because top of stack could be an operand or an operation
+    // This also checks for an empty stack.
+    id topOfStack = [stack lastObject];
+    if ( topOfStack ) {
+        [stack removeLastObject];
     }
-    [self pushOperand:result];
+
+    // We only deal with NSNumber's and NSString's.
+    // Anything else in the stack will return 0.
+    if ( [topOfStack isKindOfClass:[NSNumber class]] ) {
+        result = [topOfStack doubleValue];
+    } else if ( [topOfStack isKindOfClass:[NSString class]]) {
+        NSString *operation = topOfStack;
+        NSLog( @"Performing operation '%@'", operation );
+        if ( [operation isEqualToString:@"+"] ) {
+            result = [self popOperandOffStack:stack] + [self popOperandOffStack:stack];
+        } else if ([operation isEqualToString:@"-"]) {
+            result = [self popOperandOffStack:stack] - [self popOperandOffStack:stack];
+        } else if ([operation isEqualToString:@"*"]) {
+            result = [self popOperandOffStack:stack] * [self popOperandOffStack:stack];
+        } else if ([operation isEqualToString:@"/"]) {
+            result = [self popOperandOffStack:stack] / [self popOperandOffStack:stack];
+        } else if ([operation isEqualToString:@"x²"]) {
+            double operand = [self popOperandOffStack:stack];
+            result = operand * operand;
+        } else if ([operation isEqualToString:@"√x"]) {
+            result = sqrt( [self popOperandOffStack:stack] );
+        }
+    }
+    
     return result;
 }
 
++ (double)runProgram:(id)program {
+    NSMutableArray *stack;
+    // Check the program arg
+    if ( [program isKindOfClass:[NSArray class]] ) {
+        // We need a mutable copy of the program
+        stack = [program mutableCopy];
+    }
+    return [self popOperandOffStack:stack];
+}
+
 - (void)clearOperandStack {
-    NSLog( @"Removing all operands from the stack" );
-    [self.operandStack removeAllObjects];
+    NSLog( @"Removing %u items from the stack", self.programStack.count );
+    [self.programStack removeAllObjects];
 }
 
 @end

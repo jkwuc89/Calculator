@@ -14,4 +14,13 @@
 - (double)performOperation:(NSString *)operation;
 - (void)clearOperandStack;
 
+// Calculator's program
+@property (readonly) id program;
+
+// Run a program
++ (double)runProgram:(id)program;
+
+// Get the description for the program
++ (NSString *)getDescriptionOfProgram:(id)program;
+
 @end
