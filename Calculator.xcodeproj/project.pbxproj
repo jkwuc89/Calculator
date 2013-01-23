@@ -40,6 +40,7 @@
 		87D7A34D1683A41C00180FFC /* CalculatorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CalculatorViewController.m; sourceTree = "<group>"; };
 		87D7A35416848DBB00180FFC /* CalculatorBrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorBrain.h; sourceTree = "<group>"; };
 		87D7A35516848DBB00180FFC /* CalculatorBrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorBrain.m; sourceTree = "<group>"; };
+		87E7E31016AF7DEF0059B6FA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +60,7 @@
 		87D7A3221683A41C00180FFC = {
 			isa = PBXGroup;
 			children = (
+				87E7E31016AF7DEF0059B6FA /* README.md */,
 				87D7A3371683A41C00180FFC /* Calculator */,
 				87D7A3301683A41C00180FFC /* Frameworks */,
 				87D7A32E1683A41C00180FFC /* Products */,
@@ -307,6 +309,7 @@
 				87D7A3531683A41C00180FFC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
